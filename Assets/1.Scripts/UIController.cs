@@ -7,29 +7,30 @@ using TMPro;
 public class UIController : MonoBehaviour
 {
     [SerializeField] private Image enegyImage;
+    [SerializeField] private Image enegyDumpImage;
     [SerializeField] private TMP_Text enegyTxt;
 
     float curEnegy = 0;
     float maxEnegy = 10;
-    float delayTime = 0;
     void Start()
     {
-        
+
     }
 
     void Update()
     {
-        if (curEnegy < maxEnegy)
+        if (curEnegy <= maxEnegy)
         {
-            delayTime += Time.deltaTime;
-            if (delayTime > 1f)
-            {
-                curEnegy += 1;
-                delayTime = 0;
-            }
+            curEnegy += Time.deltaTime;
         }
 
         enegyImage.fillAmount = curEnegy / maxEnegy;
-        enegyTxt.text = string.Format($"{curEnegy} / {maxEnegy}");
+        enegyDumpImage.fillAmount = (float)System.Math.Ceiling(curEnegy) / maxEnegy;
+        enegyTxt.text = string.Format($"{(int)curEnegy} / {maxEnegy}");
+
+        if (Input.GetKeyDown(KeyCode.F3) && curEnegy / maxEnegy >= 0.1)
+        {
+            curEnegy -= 1;
+        }
     }
 }
