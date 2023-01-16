@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class SpawnController : MonoBehaviour
 {
-    
-    void Start()
+    [SerializeField] private Transform prefab;
+    [SerializeField] private Transform tempParent;
+
+    void SpawnMonster()
     {
-        
+        Instantiate(prefab, tempParent.transform);
     }
-    void Update()
+
+    public void OnClick()
     {
-        
+        SpawnMonster();
     }
 }
