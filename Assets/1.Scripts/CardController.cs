@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class CardController : MonoBehaviour
 {
-    [SerializeField] private Transform prefab;
+    [SerializeField] private CardUI prefab;
     [SerializeField] private Transform tempParent;
     [SerializeField] public Transform cardTempParent;
-    public GameObject[] cards;
+    //°í¹Î
+    public GameObject[] cards = new GameObject[4];
 
     float delayTime = 0;
 
@@ -20,7 +21,7 @@ public class CardController : MonoBehaviour
 
         if (delayTime >= 1f)
         {
-            Instantiate(prefab, tempParent);
+            Instantiate(prefab, tempParent).SetParent(cardTempParent);
             delayTime = 0;
         }
     }

@@ -9,12 +9,17 @@ public class CardUI : MonoBehaviour
 
     void Start()
     {
-        tempParent = GetComponent<CardController>().cardTempParent;
+
     }
 
     void SpawnMonster()
     {
-        Instantiate(prefab, tempParent.transform);
+        Instantiate(prefab, tempParent);
+    }
+
+    public void SetParent(Transform trans)
+    {
+        tempParent = trans;
     }
 
     public void OnClick()
