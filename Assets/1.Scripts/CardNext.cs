@@ -1,18 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 
-public class CardUI : MonoBehaviour
+public class CardNext : MonoBehaviour
 {
+    [SerializeField] private Transform prefab;
     [SerializeField] private Transform tempParent;
     [SerializeField] TMP_Text costTxt;
 
-    private int CardIndex = 0;
-    private int cost = 0;
-
-    CardData cardData;
+    public int CardIndex = 0;
+    public int cost = 0;
     void Start()
     {
 
@@ -25,8 +23,7 @@ public class CardUI : MonoBehaviour
 
     void SpawnMonster()
     {
-
-        Instantiate(cardData.Char, tempParent);
+        Instantiate(prefab, tempParent);
     }
     public void SetCost(int money)
     {
@@ -41,12 +38,6 @@ public class CardUI : MonoBehaviour
     public void SetIndex(int index)
     {
         CardIndex = index;
-    }
-
-    public CardUI SetCardData(CardData cardData)
-    {
-        this.cardData = cardData;
-        return this;
     }
 
     public void OnClick()

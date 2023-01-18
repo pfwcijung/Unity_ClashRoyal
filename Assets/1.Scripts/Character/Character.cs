@@ -14,6 +14,7 @@ public abstract class Character : MonoBehaviour
     public CharacterData charData = new CharacterData();
     public UnityEngine.AI.NavMeshAgent agent;
     public Animator anim;
+    public CardData cardData;
 
     void Update()
     {
