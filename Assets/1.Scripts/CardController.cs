@@ -8,16 +8,17 @@ public class CardController : MonoBehaviour
     [SerializeField] private Transform tempParent;
     [SerializeField] public Transform cardTempParent;
     [SerializeField] private Transform nextTempParent;
-    public List<CardUI> cards = new List<CardUI>(); 
+    public List<CardUI> cards = new List<CardUI>();
+    public CardUI nextCard;
 
     float delayTime = 0;
     public int cardIdx = 0;
     public int cost = 0;
     public int nextCost = 0;
-    public bool isClick = true;
     public Transform target;
     private int[] ableCard = new int[4];
 
+    CardData cardData;
     void Start()
     {
         MakeFirstCard();
@@ -40,11 +41,12 @@ public class CardController : MonoBehaviour
                     nextCost = cost;
                     CardUI card = Instantiate(prefab, tempParent);
                     card.SetParent(cardTempParent);
-                    card.SetIndex(i);
                     card.SetCost(nextCost);
+                    card.SetCardData(ControllerManager.Instance.dataCont.datas[0]);
                     cards.Add(card);
                     delayTime = 0;
                     ableCard[i] = 1;
+                    DestoryNextCard(nextCard.transform.gameObject);
                     MakeNextCard();
                 }
             }
@@ -58,8 +60,8 @@ public class CardController : MonoBehaviour
             CardUI card = Instantiate(prefab, tempParent);
             cost = Random.Range(1, 9);
             card.SetParent(cardTempParent);
-            card.SetIndex(cardIdx);
             card.SetCost(cost);
+            card.SetCardData(ControllerManager.Instance.dataCont.datas[0]);
             cards.Add(card);
             ableCard[cardIdx] = 1;
             cardIdx++;
@@ -72,6 +74,13 @@ public class CardController : MonoBehaviour
         CardUI nextCard = Instantiate(prefab, nextTempParent);
         cost = Random.Range(1, 9);
         nextCard.SetCost(cost);
+        nextCard.SetCardData(ControllerManager.Instance.dataCont.datas[0]);
+        this.nextCard = nextCard;
+    }
+
+    public void DestoryNextCard(GameObject gameobj)
+    {
+        Destroy(gameobj);
     }
 
     public void DestroyCard(int index)

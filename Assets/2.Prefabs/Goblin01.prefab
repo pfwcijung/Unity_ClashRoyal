@@ -764,7 +764,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 5563712509406489071}
   anim: {fileID: 5944898975364756790}
-  cardData: {fileID: 0}
+  cardData: {fileID: 11400000, guid: 7ef91746b730060459b010076f50e322, type: 2}
 --- !u!95 &5944898975364756790
 Animator:
   serializedVersion: 4

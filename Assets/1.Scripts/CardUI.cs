@@ -13,11 +13,6 @@ public class CardUI : MonoBehaviour
     private int cost = 0;
 
     CardData cardData;
-    void Start()
-    {
-
-    }
-
     void Update()
     {
         costTxt.text = string.Format($"{cost}");
@@ -25,7 +20,6 @@ public class CardUI : MonoBehaviour
 
     void SpawnMonster()
     {
-
         Instantiate(cardData.Char, tempParent);
     }
     public void SetCost(int money)
@@ -46,6 +40,7 @@ public class CardUI : MonoBehaviour
     public CardUI SetCardData(CardData cardData)
     {
         this.cardData = cardData;
+
         return this;
     }
 
