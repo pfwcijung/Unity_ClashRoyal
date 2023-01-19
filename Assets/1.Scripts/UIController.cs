@@ -12,6 +12,16 @@ public class UIController : MonoBehaviour
 
     float curEnegy = 0;
     float maxEnegy = 10;
+
+    public float SetcurEnegy
+    {
+        get { return curEnegy; }
+        set
+        {
+            curEnegy = value;
+        }
+    }
+
     void Start()
     {
 
@@ -27,10 +37,5 @@ public class UIController : MonoBehaviour
         enegyImage.fillAmount = curEnegy / maxEnegy;
         enegyDumpImage.fillAmount = (float)System.Math.Ceiling(curEnegy) / maxEnegy;
         enegyTxt.text = string.Format($"{(int)curEnegy} / {maxEnegy}");
-
-        if (Input.GetKeyDown(KeyCode.F3) && curEnegy / maxEnegy >= 0.1)
-        {
-            curEnegy -= 1;
-        }
     }
 }

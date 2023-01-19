@@ -17,8 +17,6 @@ public class CardController : MonoBehaviour
     public int nextCost = 0;
     public Transform target;
     private int[] ableCard = new int[4];
-
-    CardData cardData;
     void Start()
     {
         MakeFirstCard();
@@ -42,7 +40,7 @@ public class CardController : MonoBehaviour
                     CardUI card = Instantiate(prefab, tempParent);
                     card.SetParent(cardTempParent);
                     card.SetCost(nextCost);
-                    card.SetCardData(ControllerManager.Instance.dataCont.datas[0]);
+                    card.SetCardData(ControllerManager.Instance.dataCont.datas[cost - 1]);
                     cards.Add(card);
                     delayTime = 0;
                     ableCard[i] = 1;
@@ -58,10 +56,10 @@ public class CardController : MonoBehaviour
         for (int i = 0; i < 4; i++)
         {
             CardUI card = Instantiate(prefab, tempParent);
-            cost = Random.Range(1, 9);
+            cost = Random.Range(1, ControllerManager.Instance.dataCont.datas.Length + 1);
             card.SetParent(cardTempParent);
             card.SetCost(cost);
-            card.SetCardData(ControllerManager.Instance.dataCont.datas[0]);
+            card.SetCardData(ControllerManager.Instance.dataCont.datas[cost - 1]);
             cards.Add(card);
             ableCard[cardIdx] = 1;
             cardIdx++;
@@ -72,9 +70,9 @@ public class CardController : MonoBehaviour
     public void MakeNextCard()
     {
         CardUI nextCard = Instantiate(prefab, nextTempParent);
-        cost = Random.Range(1, 9);
+        cost = Random.Range(1, ControllerManager.Instance.dataCont.datas.Length);
         nextCard.SetCost(cost);
-        nextCard.SetCardData(ControllerManager.Instance.dataCont.datas[0]);
+        nextCard.SetCardData(ControllerManager.Instance.dataCont.datas[cost - 1]);
         this.nextCard = nextCard;
     }
 

@@ -204,10 +204,10 @@ MonoBehaviour:
   cardTempParent: {fileID: 1708395413}
   nextTempParent: {fileID: 1226079275}
   cards: []
+  nextCard: {fileID: 0}
   cardIdx: 0
   cost: 0
   nextCost: 0
-  isClick: 0
   target: {fileID: 0}
 --- !u!1 &257545041
 GameObject:
@@ -2653,6 +2653,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   datas:
   - {fileID: 11400000, guid: 7ef91746b730060459b010076f50e322, type: 2}
+  - {fileID: 11400000, guid: 7091e1a992a53f64498873e1e493bc72, type: 2}
+  - {fileID: 11400000, guid: 1009e8803b3dbb544902ccddcad184a5, type: 2}
 --- !u!4 &1597388394
 Transform:
   m_ObjectHideFlags: 0

@@ -46,10 +46,13 @@ public class CardUI : MonoBehaviour
 
     public void OnClick()
     {
-        SpawnMonster();
+        if (ControllerManager.Instance.uiCont.SetcurEnegy < cost)
+            return;
 
         ControllerManager.Instance.cardCont.DestroyCard(CardIndex);
+        ControllerManager.Instance.uiCont.SetcurEnegy -= cost;
 
+        SpawnMonster();
         Destroy(gameObject);
     }
 }
