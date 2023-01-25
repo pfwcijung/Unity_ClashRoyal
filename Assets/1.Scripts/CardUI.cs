@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
+using System.Reflection;
+using Unity.VisualScripting;
 
 public class CardUI : MonoBehaviour
 {

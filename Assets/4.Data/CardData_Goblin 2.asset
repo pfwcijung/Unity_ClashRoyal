@@ -16,3 +16,4 @@ MonoBehaviour:
   speed: 1
   cost: 2
   damage: 100
+  attDelay: 3

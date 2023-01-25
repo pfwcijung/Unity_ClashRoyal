@@ -11,14 +11,14 @@ public class CardNext : MonoBehaviour
 
     public int CardIndex = 0;
     public int cost = 0;
-    void Start()
-    {
-
-    }
 
     void Update()
     {
         costTxt.text = string.Format($"{cost}");
+    }
+    public void Initialized()
+    {
+
     }
 
     void SpawnMonster()

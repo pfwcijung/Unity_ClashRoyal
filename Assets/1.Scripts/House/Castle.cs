@@ -11,25 +11,24 @@ public class Castle : MonoBehaviour
     [SerializeField] private float castleCurHp = 0;
     [SerializeField] private float castleMaxHp = 0;
 
+    public void Damage(float damage)
+    {
+        castleCurHp -= damage;
+        if(castleCurHp <= 0)
+        {
+            curHpImage.enabled = false;
+            maxHpImage.enabled = false;
+            Destroy(gameObject);
+        }
+    }
     void Start()
     {
         castleCurHp = castleMaxHp = setCastleHp;
-        curHpImage.enabled = false;
-        maxHpImage.enabled = false;
+        //curHpImage.enabled = false;
+        //maxHpImage.enabled = false;
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F1))
-        {
-            curHpImage.enabled = true;
-            maxHpImage.enabled = true;
-            castleCurHp -= 100;
-        }
-        else if (Input.GetKeyDown(KeyCode.F2))
-        {
-            castleCurHp += 100;
-        }
-
         curHpImage.fillAmount = (castleCurHp / castleMaxHp);
     }
 }

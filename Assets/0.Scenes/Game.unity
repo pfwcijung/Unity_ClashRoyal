@@ -2930,7 +2930,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57f3672bb47935043aa00d46c8b76ef2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  charCont: {fileID: 0}
   uiCont: {fileID: 1760584022}
+  cardNext: {fileID: 0}
   cardCont: {fileID: 79325529}
   dataCont: {fileID: 1597388393}
 --- !u!4 &1781819902

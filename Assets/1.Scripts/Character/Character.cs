@@ -16,6 +16,21 @@ public abstract class Character : MonoBehaviour
     public Animator anim;
     public CardData cardData;
 
+    public int index;
+
+    public float damage = 100 ;
+    public float attDelay = 2;
+    public float delayTime = 0;
+
+    public int SetIndex
+    {
+        get { return index; }
+        set
+        {
+            index = value;
+        }
+    }
+
     void Update()
     {
         GameObject[] characters = GameObject.FindGameObjectsWithTag(charData.findTag);
@@ -48,8 +63,18 @@ public abstract class Character : MonoBehaviour
         {
             anim.SetTrigger("idle");
             agent.SetDestination(transform.position);
-            anim.SetTrigger("att");
-        }
 
+            delayTime += Time.deltaTime;
+
+            if (attDelay < delayTime)
+            {
+                anim.SetTrigger("att");
+                delayTime = 0;
+                if (findTarget.tag.Equals("enemy"))
+                {
+                    findTarget.GetComponent<Castle>().Damage(damage);
+                }
+            }
+        }
     }
 }
