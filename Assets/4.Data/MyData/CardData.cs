@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "CardData",menuName ="MyCardData/CardData")]
+[CreateAssetMenu(fileName = "CardData", menuName = "MyCardData/CardData")]
 public class CardData : ScriptableObject
 {
     [SerializeField] Character character;
@@ -17,6 +17,12 @@ public class CardData : ScriptableObject
     [SerializeField] int damage;
     public int Damage { get { return damage; } }
 
-    [SerializeField] int attDelay;
-    public int AttDelay { get { return attDelay; } }
+    [SerializeField] float attDelay;
+    public float AttDelay { get { return attDelay; } }
+
+    [SerializeField] float attRange;
+    public float AttRange { get { return attRange; } }
+
+    [SerializeField] float hp;
+    public float Hp { get { return hp; } }
 }

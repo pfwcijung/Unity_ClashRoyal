@@ -2306,6 +2306,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1341558250}
   m_CullTransparentMesh: 1
+--- !u!1 &1445209355
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1445209357}
+  - component: {fileID: 1445209356}
+  m_Layer: 0
+  m_Name: EnemySpawnManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1445209356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1445209355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a172dd65dc7cce4dbe783d469a209b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tempParent: {fileID: 1734193067}
+--- !u!4 &1445209357
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1445209355}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.12228109, y: -1.0979543, z: 0.11096752}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1781819902}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1511723436
 GameObject:
   m_ObjectHideFlags: 0
@@ -2320,7 +2365,7 @@ GameObject:
   - component: {fileID: 1513721708}
   m_Layer: 0
   m_Name: RightHouse
-  m_TagString: Untagged
+  m_TagString: my
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -2655,6 +2700,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7ef91746b730060459b010076f50e322, type: 2}
   - {fileID: 11400000, guid: 7091e1a992a53f64498873e1e493bc72, type: 2}
   - {fileID: 11400000, guid: 1009e8803b3dbb544902ccddcad184a5, type: 2}
+  enemyDatas:
+  - {fileID: 11400000, guid: 8bb72c8a2ccb2da46a4aea0092ea76c9, type: 2}
 --- !u!4 &1597388394
 Transform:
   m_ObjectHideFlags: 0
@@ -2756,7 +2803,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1708395413}
   m_Layer: 0
-  m_Name: SpawnPoint
+  m_Name: MySpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2776,6 +2823,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1734193066
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1734193067}
+  m_Layer: 0
+  m_Name: EnemySpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1734193067
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1734193066}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.5, z: 3.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1760584021
 GameObject:
@@ -2930,9 +3008,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57f3672bb47935043aa00d46c8b76ef2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  charCont: {fileID: 0}
   uiCont: {fileID: 1760584022}
-  cardNext: {fileID: 0}
   cardCont: {fileID: 79325529}
   dataCont: {fileID: 1597388393}
 --- !u!4 &1781819902
@@ -2948,6 +3024,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1597388394}
+  - {fileID: 1445209357}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3220,7 +3297,7 @@ GameObject:
   - component: {fileID: 1938261279}
   m_Layer: 0
   m_Name: LeftHouse
-  m_TagString: Untagged
+  m_TagString: my
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -3840,7 +3917,7 @@ GameObject:
   - component: {fileID: 2126910173}
   m_Layer: 0
   m_Name: MainHouse
-  m_TagString: Untagged
+  m_TagString: my
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647

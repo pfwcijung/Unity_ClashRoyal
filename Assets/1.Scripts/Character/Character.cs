@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public struct CharacterData
 {
     public string findTag;
-    public float attRange;
 }
 
 public abstract class Character : MonoBehaviour
@@ -15,20 +14,18 @@ public abstract class Character : MonoBehaviour
     public UnityEngine.AI.NavMeshAgent agent;
     public Animator anim;
     public CardData cardData;
+    public EnemyData enemyData;
+    private float delayTime = 0;
+    private float distance = 0;
+    private float curHp = 1;
+    private float deadTime = 0;
 
-    public int index;
-
-    public float damage = 100 ;
-    public float attDelay = 2;
-    public float delayTime = 0;
-
-    public int SetIndex
+    void Start()
     {
-        get { return index; }
-        set
-        {
-            index = value;
-        }
+        if (gameObject.tag.Equals("my"))
+            curHp = cardData.Hp;
+        else if (gameObject.tag.Equals("enemy"))
+            curHp = enemyData.Hp;
     }
 
     void Update()
@@ -38,10 +35,11 @@ public abstract class Character : MonoBehaviour
         if (characters.Length == 0)
             return;
 
-        float distance = 100;
         GameObject findTarget = null;
 
-        foreach(var character in characters)
+        distance = 100;
+
+        foreach (var character in characters)
         {
             float dis = Vector3.Distance(agent.transform.position, character.transform.position);
             if (distance > dis)
@@ -54,7 +52,39 @@ public abstract class Character : MonoBehaviour
         if (findTarget == null)
             return;
 
-        if(charData.attRange < distance)
+        if (gameObject.tag.Equals("my"))
+        {
+            MyMonsAct(findTarget);
+        }
+        else if (gameObject.tag.Equals("enemy"))
+        {
+            EnemyMonsAct(findTarget);
+        }
+        
+
+    }
+
+    void Damage(float damage)
+    {
+        if(curHp <= 0)
+        {
+            deadTime += Time.deltaTime;
+            Debug.Log(deadTime);
+            Destroy(gameObject);
+
+            gameObject.tag = "Untagged";
+            anim.SetTrigger("dead");
+
+
+            //if (deadTime > 1f) 
+        }
+
+        curHp -= damage;
+    }
+
+    private void MyMonsAct(GameObject findTarget)
+    {
+        if (cardData.AttRange < distance)
         {
             agent.SetDestination(findTarget.transform.position);
             anim.SetTrigger("run");
@@ -66,13 +96,48 @@ public abstract class Character : MonoBehaviour
 
             delayTime += Time.deltaTime;
 
-            if (attDelay < delayTime)
+            if (cardData.AttDelay < delayTime)
             {
                 anim.SetTrigger("att");
                 delayTime = 0;
-                if (findTarget.tag.Equals("enemy"))
+
+                if(findTarget.GetComponent<Castle>() != null)
                 {
-                    findTarget.GetComponent<Castle>().Damage(damage);
+                    findTarget.GetComponent<Castle>().Damage(cardData.Damage);
+                }
+                else if(findTarget.GetComponent<Character>() != null)
+                {
+                    findTarget.GetComponent<Character>().Damage(cardData.Damage);
+                }
+            }
+        }
+    }
+    private void EnemyMonsAct(GameObject findTarget)
+    {
+        if (enemyData.AttRange < distance)
+        {
+            agent.SetDestination(findTarget.transform.position);
+            anim.SetTrigger("run");
+        }
+        else
+        {
+            anim.SetTrigger("idle");
+            agent.SetDestination(transform.position);
+
+            delayTime += Time.deltaTime;
+
+            if (enemyData.AttDelay < delayTime)
+            {
+                anim.SetTrigger("att");
+                delayTime = 0;
+
+                if (findTarget.GetComponent<Castle>() != null)
+                {
+                    findTarget.GetComponent<Castle>().Damage(enemyData.Damage);
+                }
+                else if (findTarget.GetComponent<Character>() != null)
+                {
+                    findTarget.GetComponent<Character>().Damage(enemyData.Damage);
                 }
             }
         }

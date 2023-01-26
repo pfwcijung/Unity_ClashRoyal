@@ -17,3 +17,5 @@ MonoBehaviour:
   cost: 1
   damage: 50
   attDelay: 1
+  attRange: 2
+  hp: 100

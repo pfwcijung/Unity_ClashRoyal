@@ -7,6 +7,5 @@ public class Goblin : Character
     void Start()
     {
         charData.findTag = "enemy";
-        charData.attRange = 1f;
     }
 }

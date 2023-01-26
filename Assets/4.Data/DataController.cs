@@ -5,4 +5,5 @@ using UnityEngine;
 public class DataController : MonoBehaviour
 {
     public CardData[] datas;
+    public EnemyData[] enemyDatas;
 }

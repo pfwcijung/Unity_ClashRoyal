@@ -6,7 +6,7 @@ public class ControllerManager : MonoBehaviour
 {
     public static ControllerManager Instance;
 
-    public CardNext cardNext;
+    //public CardNext cardNext;
     public UIController uiCont;
     public CardController cardCont;
     public DataController dataCont;

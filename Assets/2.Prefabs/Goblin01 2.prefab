@@ -727,7 +727,7 @@ GameObject:
   - component: {fileID: 5563712509406489071}
   m_Layer: 0
   m_Name: Goblin01 2
-  m_TagString: Untagged
+  m_TagString: my
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -765,6 +765,7 @@ MonoBehaviour:
   agent: {fileID: 5563712509406489071}
   anim: {fileID: 5944898975364756790}
   cardData: {fileID: 11400000, guid: 7091e1a992a53f64498873e1e493bc72, type: 2}
+  enemyData: {fileID: 0}
 --- !u!95 &5944898975364756790
 Animator:
   serializedVersion: 4
