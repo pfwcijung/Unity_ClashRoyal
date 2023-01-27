@@ -6,8 +6,6 @@ TagManager:
   tags:
   - enemy
   - my
-  - enemyMons
-  - myMons
   layers:
   - Default
   - TransparentFX

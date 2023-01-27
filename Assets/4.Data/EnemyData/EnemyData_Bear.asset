@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   character: {fileID: 4830221873128781837, guid: f7d38c2cf47ef5f48b206700205ddbbb, type: 3}
   speed: 1
-  cost: 1
-  damage: 50
+  cost: 3
+  damage: 70
   attDelay: 1
   attRange: 2
-  hp: 100
+  hp: 200

@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86280406c4fc32a4fadc686f359c7274, type: 3}
+  m_Name: EnemyData_Slime
+  m_EditorClassIdentifier: 
+  character: {fileID: 599859369929885328, guid: 7729e4cafa2f61b449763e8af5b486c4, type: 3}
+  speed: 1
+  cost: 2
+  damage: 60
+  attDelay: 1
+  attRange: 2
+  hp: 150

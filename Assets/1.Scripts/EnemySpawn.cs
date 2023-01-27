@@ -8,20 +8,31 @@ public class EnemySpawn : MonoBehaviour
 
     EnemyData enemyData;
 
-    private float delayTime = 0;
+    private float cost = 0;
     private int rand = 0;
+
+    void Start()
+    {
+        InvokeRepeating("SetSpawnData", 1f, 3f);
+    }
+
     void Update()
     {
-        if (delayTime >= 10)
+        if (cost >= 10)
             return;
 
-        delayTime += Time.deltaTime;
+        cost += Time.deltaTime;
+    }
 
-        if(delayTime >= 2)
+    void SetSpawnData()
+    {
+        rand = Random.Range(1, ControllerManager.Instance.dataCont.enemyDatas.Length);
+
+        if (cost >= rand)
         {
-            delayTime = 0;
-            SetEnemyData(ControllerManager.Instance.dataCont.enemyDatas[0]);
+            SetEnemyData(ControllerManager.Instance.dataCont.enemyDatas[rand - 1]);
             SpawnMonster();
+            cost -= rand;
         }
     }
 

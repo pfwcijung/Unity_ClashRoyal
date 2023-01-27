@@ -18,18 +18,29 @@ public abstract class Character : MonoBehaviour
     private float delayTime = 0;
     private float distance = 0;
     private float curHp = 1;
-    private float deadTime = 0;
+    private float damageDelayTime = 0;
 
     void Start()
     {
         if (gameObject.tag.Equals("my"))
+        {
             curHp = cardData.Hp;
+            agent.speed = cardData.Speed;
+        }
         else if (gameObject.tag.Equals("enemy"))
+        {
             curHp = enemyData.Hp;
+            agent.speed = enemyData.Speed;
+        }
     }
 
     void Update()
     {
+        if (curHp <= 0)
+        {
+            return;
+        }
+
         GameObject[] characters = GameObject.FindGameObjectsWithTag(charData.findTag);
 
         if (characters.Length == 0)
@@ -52,6 +63,8 @@ public abstract class Character : MonoBehaviour
         if (findTarget == null)
             return;
 
+        damageDelayTime += Time.deltaTime;
+
         if (gameObject.tag.Equals("my"))
         {
             MyMonsAct(findTarget);
@@ -63,23 +76,21 @@ public abstract class Character : MonoBehaviour
         
 
     }
-
-    void Damage(float damage)
+    public void Damage(float damage)
     {
+        if (damageDelayTime < 1f)
+            return;
+        curHp -= damage;
+        damageDelayTime = 0;
+
         if(curHp <= 0)
         {
-            deadTime += Time.deltaTime;
-            Debug.Log(deadTime);
-            Destroy(gameObject);
-
+            agent.enabled = false;
+            agent.SetDestination(transform.position);
             gameObject.tag = "Untagged";
             anim.SetTrigger("dead");
-
-
-            //if (deadTime > 1f) 
+            Destroy(gameObject, 2f);
         }
-
-        curHp -= damage;
     }
 
     private void MyMonsAct(GameObject findTarget)
@@ -96,9 +107,10 @@ public abstract class Character : MonoBehaviour
 
             delayTime += Time.deltaTime;
 
+            anim.SetTrigger("att");
+
             if (cardData.AttDelay < delayTime)
             {
-                anim.SetTrigger("att");
                 delayTime = 0;
 
                 if(findTarget.GetComponent<Castle>() != null)
@@ -126,9 +138,10 @@ public abstract class Character : MonoBehaviour
 
             delayTime += Time.deltaTime;
 
+            anim.SetTrigger("att");
+
             if (enemyData.AttDelay < delayTime)
             {
-                anim.SetTrigger("att");
                 delayTime = 0;
 
                 if (findTarget.GetComponent<Castle>() != null)

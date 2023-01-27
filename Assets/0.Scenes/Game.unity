@@ -2698,10 +2698,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   datas:
   - {fileID: 11400000, guid: 7ef91746b730060459b010076f50e322, type: 2}
-  - {fileID: 11400000, guid: 7091e1a992a53f64498873e1e493bc72, type: 2}
-  - {fileID: 11400000, guid: 1009e8803b3dbb544902ccddcad184a5, type: 2}
+  - {fileID: 11400000, guid: 675bd676e93f77b48a2bf1e88bb959f4, type: 2}
+  - {fileID: 11400000, guid: 2d409f5298d5b3144bf77fd68c31d4d4, type: 2}
+  - {fileID: 11400000, guid: 8d23a0c790c8b4c4c829893ccee6eeff, type: 2}
   enemyDatas:
+  - {fileID: 11400000, guid: b42d8c6e4bd17d44d9f406e3f62c4ac3, type: 2}
+  - {fileID: 11400000, guid: 4f07932da08d9f54f8a77987e91d4e46, type: 2}
   - {fileID: 11400000, guid: 8bb72c8a2ccb2da46a4aea0092ea76c9, type: 2}
+  - {fileID: 11400000, guid: a39a05979a559bd439b452d279e617a3, type: 2}
 --- !u!4 &1597388394
 Transform:
   m_ObjectHideFlags: 0

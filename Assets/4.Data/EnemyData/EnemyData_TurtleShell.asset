@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86280406c4fc32a4fadc686f359c7274, type: 3}
+  m_Name: EnemyData_TurtleShell
+  m_EditorClassIdentifier: 
+  character: {fileID: 6168233967586152809, guid: 920728bf7f9e8c64d8f051dbd3ea0e22, type: 3}
+  speed: 1
+  cost: 4
+  damage: 80
+  attDelay: 1
+  attRange: 2
+  hp: 300
