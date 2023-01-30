@@ -203,6 +203,7 @@ MonoBehaviour:
   tempParent: {fileID: 79325527}
   cardTempParent: {fileID: 1708395413}
   nextTempParent: {fileID: 1226079275}
+  canvas: {fileID: 322858135}
   cards: []
   nextCard: {fileID: 0}
   cardIdx: 0
@@ -477,7 +478,7 @@ GameObject:
   - component: {fileID: 315083204}
   m_Layer: 0
   m_Name: Right
-  m_TagString: Untagged
+  m_TagString: ray
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -1347,7 +1348,7 @@ GameObject:
   - component: {fileID: 618519605}
   m_Layer: 0
   m_Name: Left
-  m_TagString: Untagged
+  m_TagString: ray
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -1850,7 +1851,7 @@ GameObject:
   - component: {fileID: 1119008870}
   m_Layer: 0
   m_Name: My
-  m_TagString: Untagged
+  m_TagString: ray
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647

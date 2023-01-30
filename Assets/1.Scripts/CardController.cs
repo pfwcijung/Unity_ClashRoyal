@@ -8,6 +8,7 @@ public class CardController : MonoBehaviour
     [SerializeField] private Transform tempParent;
     [SerializeField] public Transform cardTempParent;
     [SerializeField] private Transform nextTempParent;
+    [SerializeField] private Canvas canvas;
     public List<CardUI> cards = new List<CardUI>();
     public CardUI nextCard;
 
@@ -41,6 +42,7 @@ public class CardController : MonoBehaviour
                     card.SetParent(cardTempParent);
                     card.SetCost(nextCost);
                     card.SetCardData(ControllerManager.Instance.dataCont.datas[cost - 1]);
+                    card.SetDataCanvas(canvas);
                     cards.Add(card);
                     delayTime = 0;
                     ableCard[i] = 1;
@@ -60,6 +62,7 @@ public class CardController : MonoBehaviour
             card.SetParent(cardTempParent);
             card.SetCost(cost);
             card.SetCardData(ControllerManager.Instance.dataCont.datas[cost - 1]);
+            card.SetDataCanvas(canvas);
             cards.Add(card);
             ableCard[cardIdx] = 1;
             cardIdx++;
@@ -73,6 +76,7 @@ public class CardController : MonoBehaviour
         cost = Random.Range(1, ControllerManager.Instance.dataCont.datas.Length);
         nextCard.SetCost(cost);
         nextCard.SetCardData(ControllerManager.Instance.dataCont.datas[cost - 1]);
+        nextCard.SetDataCanvas(canvas);
         this.nextCard = nextCard;
     }
 
