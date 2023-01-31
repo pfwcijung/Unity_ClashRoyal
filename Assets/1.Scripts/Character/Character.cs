@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -80,6 +81,7 @@ public abstract class Character : MonoBehaviour
     {
         if (damageDelayTime < 1f)
             return;
+
         curHp -= damage;
         damageDelayTime = 0;
 
@@ -91,6 +93,7 @@ public abstract class Character : MonoBehaviour
             anim.SetTrigger("dead");
             Destroy(gameObject, 2f);
         }
+
     }
 
     private void MyMonsAct(GameObject findTarget)

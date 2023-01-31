@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.EventSystems;
+using UnityEngineInternal;
 
 public class CardUI : MonoBehaviour, IDragHandler, IDropHandler
 {
@@ -84,6 +85,13 @@ public class CardUI : MonoBehaviour, IDragHandler, IDropHandler
 
     public void OnDrop(PointerEventData eventData)
     {
+        // 카드를 원래 자리로 돌려야함
+        if (hit.transform == null)
+        {
+            ControllerManager.Instance.cardCont.ReturnCardPos(this);
+            return;
+        }
+
         if (ControllerManager.Instance.uiCont.SetcurEnegy < cost)
             return;
 
@@ -91,19 +99,9 @@ public class CardUI : MonoBehaviour, IDragHandler, IDropHandler
         {
             ControllerManager.Instance.cardCont.DestroyCard(CardIndex);
             ControllerManager.Instance.uiCont.SetcurEnegy -= cost;
-            // character.transform.position = new vector3(git.point.x,0.5f,hit.point.z); ==> 내 방식대로 고쳐야함
-            // 카드정렬 문제 해결해야함
+            tempParent.position = new Vector3(hit.point.x, 0.5f, hit.point.z);
             SpawnMonster();
             Destroy(gameObject);
         }
-
-        StartCoroutine("CardPosInit");
-    }
-
-    IEnumerator CardPosInit()
-    {
-        transform.parent.GetComponent<HorizontalLayoutGroup>().enabled = false;
-        yield return new WaitForSeconds(.1f);
-        transform.parent.GetComponent<HorizontalLayoutGroup>().enabled = true;
     }
 }

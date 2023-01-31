@@ -5,7 +5,7 @@ using UnityEngine;
 public class CardController : MonoBehaviour
 {
     [SerializeField] private CardUI prefab;
-    [SerializeField] private Transform tempParent;
+    [SerializeField] public Transform tempParent;
     [SerializeField] public Transform cardTempParent;
     [SerializeField] private Transform nextTempParent;
     [SerializeField] private Canvas canvas;
@@ -89,5 +89,10 @@ public class CardController : MonoBehaviour
     {
         cards.RemoveAt(index);
         ableCard[index] = 0;
+    }
+
+    public void ReturnCardPos(CardUI card)
+    {
+        card.transform.position = tempParent.position;
     }
 }

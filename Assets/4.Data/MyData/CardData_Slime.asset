@@ -15,7 +15,7 @@ MonoBehaviour:
   character: {fileID: 4055012811139411216, guid: 9ee6c2e30b2e26d43a0c7941044f0be5, type: 3}
   speed: 1
   cost: 2
-  damage: 60
+  damage: 50
   attDelay: 1
   attRange: 2
   hp: 150
